@@ -1,0 +1,27 @@
+load_file("nrngui.hoc") 
+
+create soma
+access soma
+
+soma nseg = 1
+soma diam = 15
+soma L = 40
+soma Ra = 150.0
+
+soma {
+    insert pas { g_pas=0.00009  e_pas=-40} // -76 for Ih block
+	insert kamt	{gbar_kamt = .0020 ek_kamt = -85}
+	insert kdrmt {gbar_kdrmt = .00050 ek_kdrmt = -85}
+	}
+
+objectvar stim
+soma stim = new Irampsr (0.5)
+
+stim.del = 4000
+stim.dur = 12000
+stim.amp = 0.050
+
+tstop = 30000
+
+v_init = -52
+
